@@ -344,7 +344,6 @@ Non esistono transizioni dirette da `2` verso altri stati: una volta completata,
 | `Update TransazioniArea status 5` | Execute SQL Task | Imposta `status_code = 5` sulla transazione corrente. |
 | `Log TransazioniErrori` | Execute SQL Task | Estrae da `SSISDB.catalog.operation_messages` i messaggi di errore relativi alla fase (o alla transazione) e li inserisce in `Flow.TransazioniErrori`; compone inoltre il testo della notifica di errore. |
 | `Notifica Errore` | Send Mail Task | Invia la notifica di errore, con oggetto costruito dinamicamente (transazione, area, fase, job). |
-| `Log TransazioniErrori 1`, `Script Task`, `Notifica Errore 1 1` | Execute SQL / Script / Send Mail Task | Percorso alternativo di logging/notifica, presente nel package ma **disabilitato**. |
 
 ### `FlowRestartArea.dtsx`
 
