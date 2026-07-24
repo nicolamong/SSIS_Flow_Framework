@@ -38,7 +38,7 @@ Il progetto **PRD_PRODOTTI** orchestra, tramite il Flow Framework, l'intera cate
 
 Il progetto segue un flusso lineare a quattro macro-stadi, tutti orchestrati come fasi dell'area `PRD_PRODOTTI` dal motore **FlowEngineManager.dtsx** del Flow Framework.
 
-![Architettura generale](diagrams_prd_prodotti/01_architettura_generale.png)
+![Architettura generale](diagrams/PRD_01_architettura_generale.png)
 
 **Descrizione del flusso:**
 
@@ -58,7 +58,7 @@ Questa architettura a stadi separati (import → riconciliazione → distribuzio
 
 Il progetto è composto da **24 package SSIS**, orchestrati come fasi dell'area `PRD_PRODOTTI` (si veda `Fasi.csv`), da un insieme di stored procedure e function nello schema `Products`, e da un ampio schema dati suddiviso tra `Staging` (dati grezzi importati) e `Products` (dati anagrafici consolidati, distinte base, prezzi, bundle, regole, log).
 
-![Componenti principali](diagrams_prd_prodotti/02_componenti_principali.png)
+![Componenti principali](diagrams/PRD_02_componenti_principali.png)
 
 | Gruppo di fasi | Package `.dtsx` | Stored procedure / meccanismo | Tabelle principali |
 |---|---|---|---|
@@ -108,7 +108,7 @@ Il progetto **non implementa un proprio meccanismo di restart**: si appoggia int
 
 Data l'ampiezza dello schema (oltre 70 tabelle complessive tra `Staging` e `Products`), il diagramma seguente si concentra sulle **entità core del flusso di sincronizzazione**: la catena delta (import → CDC → distribuzione) e le tabelle di logging. Le tabelle anagrafiche di supporto (famiglie, serie, modelli, varianti, caratteristiche tecniche, classi di stock, ecc.) sono descritte a livello di elenco nella [Sezione 6](#6-tabelle-stored-procedure-e-function).
 
-![Schema ER](diagrams_prd_prodotti/03_er_diagram.png)
+![Schema ER](diagrams/PRD_03_er_diagram.png)
 
 Lettura del diagramma:
 
@@ -290,7 +290,7 @@ Log delle chiamate REST effettuate verso Apparound durante le fasi 31–37.
 
 Il diagramma seguente descrive la sequenza tipica di un'esecuzione completa dell'area `PRD_PRODOTTI`, dall'import da Business Central fino all'aggiornamento di Apparound e AS400.
 
-![Sequenza esecutiva](diagrams_prd_prodotti/04_sequenza_esecutiva.png)
+![Sequenza esecutiva](diagrams/PRD_04_sequenza_esecutiva.png)
 
 **Passi principali:**
 
@@ -307,7 +307,7 @@ Poiché tutte le fasi sono `managing_code = 1` nella configurazione (`Fasi.csv`)
 
 Il diagramma seguente riassume come i package di progetto, le stored procedure/function e le tabelle interagiscono tra loro, indipendentemente dall'ordine temporale.
 
-![Interazioni principali](diagrams_prd_prodotti/05_interazioni_principali.png)
+![Interazioni principali](diagrams/PRD_05_interazioni_principali.png)
 
 Punti salienti:
 
