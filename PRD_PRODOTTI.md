@@ -347,7 +347,7 @@ Punti salienti:
 | 37 | `PRD_37_Apparound_Rules.dtsx` | Invia ad Apparound le regole di configurazione (`DF Insert Rules`). |
 | 41 | `PRD_41_AS400_DBase_Refresh.dtsx` | Execute SQL Task che invoca `Products.AS400_DBase_Refresh @Transazione`: scrittura dell'anagrafica e della distinta base delle macchine variate sulle tabelle native AS400, tramite Linked Server `DBAS400`. |
 
-**Nota sui componenti ricorrenti nei package Apparound (31–37):** tutti condividono la medesima struttura interna, riconoscibile dagli stessi nomi di task: `EST Get Variables` (recupero credenziali/URL da `Products.Api_Config`), `ST Get Token` (Script Task che effettua la richiesta OAuth e restituisce `AuthToken`), seguiti da uno o più Data Flow (`DF ...`) dedicati alle operazioni di estrazione/inserimento/aggiornamento/cancellazione verso l'API Apparound, ciascuno con un componente script per la costruzione del payload JSON e uno per l'invio HTTP, e un Conditional Split che instrada l'esito verso `Api_Log` o `Api_Log_Ok`, `EST Apparound_Check_Anomalie` (verifica anomalie pregresse).
+**Nota sui componenti ricorrenti nei package Apparound (31–37):** tutti condividono la medesima struttura interna, riconoscibile dagli stessi nomi di task: `EST Get Variables` (recupero credenziali/URL da `Products.Api_Config`), `ST Get Token` (Script Task che effettua la richiesta OAuth e restituisce `AuthToken`), seguiti da uno o più Data Flow (`DF ...`) dedicati alle operazioni di estrazione/inserimento/aggiornamento/cancellazione verso l'API Apparound, ciascuno con un componente script per la costruzione del payload JSON e uno per l'invio HTTP, e un Conditional Split che instrada l'esito verso `Api_Log` o `Api_Log_Ok`, infine `EST Apparound_Check_Anomalie` (verifica anomalie).
 
 ---
 
